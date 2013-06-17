@@ -1,2 +1,1 @@
-openapi-infodelivery
-====================
+Openapi InfoDelivery Project
