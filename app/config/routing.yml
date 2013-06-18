@@ -2,3 +2,12 @@ layout:
     resource: "@LayoutBundle/Resources/config/routing.yml"
     prefix:   /
 
+security_login:
+    pattern:  /zaloguj
+    defaults: { _controller: LayoutBundle:Security:login }
+
+security_login_check:
+    pattern:  /sprawdz-dane
+
+security_logout:
+    pattern:  /wyloguj
