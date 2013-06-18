@@ -24,6 +24,11 @@ order_update:
     defaults: { _controller: "InfoDeliveryBundle:OrderEntry:update" }
     requirements: { _method: post|put }
 
+order_mark_state:
+    pattern:  /{id}/oznacz-stan/{state}
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:markState"}
+
+
 order_delete:
     pattern:  /{id}/usun
     defaults: { _controller: "InfoDeliveryBundle:OrderEntry:delete" }

@@ -1,0 +1,41 @@
+<table class="records_list table">
+    <thead>
+    <tr>
+        <th>Numer</th>
+        <th>Usługa</th>
+        <th>Przedmiot usługi</th>
+        <th>Wartość</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+    <tr>
+        <td><a href="{{ path('order_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        <td >{{ entity.service }}</td>
+        <td >{{ entity.subject }}</td>
+        <td >{{ entity.value }}</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="{{ path('order_show', { 'id': entity.id }) }}">pokaż</a>
+                </li>
+                <li>
+                    <a href="{{ path('order_edit', { 'id': entity.id }) }}">edytuj</a>
+                </li>
+                {% if entity.state == 0 %}
+                <li>
+                    <a href="{{ path('order_mark_state', { 'id': entity.id, 'state': 1}) }}">W realizacji</a>
+                </li>
+                {% endif %}
+                {% if entity.state == 1 %}
+                <li>
+                    <a href="{{ path('order_mark_state', { 'id': entity.id, 'state': 2 }) }}">Zamknij</a>
+                </li>
+                {% endif %}
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

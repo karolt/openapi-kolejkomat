@@ -2,44 +2,24 @@
 
 {% block container%}
     <h1>Zamówienia</h1>
+    <h3>Nowe</h3>
+    {{ include('InfoDeliveryBundle:OrderEntry:orders.inc.html.twig', {'entities':new}) }}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Numer</th>
-                <th>Usługa</th>
-                <th>Przedmiot usługi</th>
-                <th>Wartość</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('order_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.service }}</td>
-                <td>{{ entity.subject }}</td>
-                <td>{{ entity.value }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('order_show', { 'id': entity.id }) }}">pokaż</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('order_edit', { 'id': entity.id }) }}">edytuj</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('order_new') }}">
                 Dodaj nowe
             </a>
         </li>
     </ul>
+
+    <br/>
+    <h3>W realizacji</h3>
+    {{ include('InfoDeliveryBundle:OrderEntry:orders.inc.html.twig', {'entities':inProgress}) }}
+
+    <br/>
+    <h3>Zamknięte</h3>
+    {{ include('InfoDeliveryBundle:OrderEntry:orders.inc.html.twig', {'entities':closed}) }}
+
+
     {% endblock %}

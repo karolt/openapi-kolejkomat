@@ -21,13 +21,21 @@ class OrderEntryController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('InfoDeliveryBundle:OrderEntry')->findAll();
 
         return $this->render('InfoDeliveryBundle:OrderEntry:index.html.twig', array(
-            'entities' => $entities,
+            'new' => $this->getOrdersWithState(OrderEntry::STATE_NEW),
+            'inProgress' => $this->getOrdersWithState(OrderEntry::STATE_IN_PROGRESS),
+            'closed' => $this->getOrdersWithState(OrderEntry::STATE_CLOSED),
         ));
     }
+
+    private function getOrdersWithState($state)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $new = $em->getRepository('InfoDeliveryBundle:OrderEntry')->findBy(array('owner' => $this->getUser()->getUsername(), 'state' => $state));
+        return $new;
+    }
+
     /**
      * Creates a new OrderEntry entity.
      *
@@ -40,6 +48,8 @@ class OrderEntryController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setState(OrderEntry::STATE_NEW);
+            $entity->setOwner($this->getUser()->getUsername());
             $em->persist($entity);
             $em->flush();
 
@@ -180,5 +190,27 @@ class OrderEntryController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    /**
+     * Deletes a OrderEntry entity.
+     *
+     */
+    public function markStateAction(Request $request, $id, $state)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var $entity OrderEntry */
+        $entity = $em->getRepository('InfoDeliveryBundle:OrderEntry')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find OrderEntry entity.');
+        }
+
+        $entity->setState($state);
+        $em->persist($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('order'));
     }
 }

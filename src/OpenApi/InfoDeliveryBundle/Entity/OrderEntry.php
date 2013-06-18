@@ -21,6 +21,11 @@ class OrderEntry
     /**
      * @var string
      */
+    private $owner;
+
+    /**
+     * @var string
+     */
     private $subject;
 
     /**
@@ -153,6 +158,22 @@ class OrderEntry
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * @param string $owner
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 
 

@@ -41,6 +41,7 @@ class ServiceController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setOwner($this->getUser()->getUsername());
             $em->persist($entity);
             $em->flush();
 

@@ -7,6 +7,9 @@ OpenApi\InfoDeliveryBundle\Entity\OrderEntry:
             id: true
             generator:
                 strategy: AUTO
+        owner:
+            type: string
+            length: '100'
         subject:
             type: string
             length: '100'
