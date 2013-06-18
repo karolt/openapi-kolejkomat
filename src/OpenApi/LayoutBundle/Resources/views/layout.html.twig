@@ -39,7 +39,10 @@
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">O projekcie</a></li>
+                    <li style="padding-left: 350px"><a href="#about">O projekcie</a></li>
+                    {% if app.user %}
+                        <li><a href="{{path('security_logout')}}">Wyloguj</a></li>
+                    {% endif %}
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
