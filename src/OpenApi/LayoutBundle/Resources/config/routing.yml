@@ -1,0 +1,3 @@
+layout_homepage:
+    pattern:  /
+    defaults: { _controller: LayoutBundle:Test:hello }
