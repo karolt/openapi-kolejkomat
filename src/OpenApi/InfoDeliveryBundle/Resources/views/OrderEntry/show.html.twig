@@ -1,0 +1,46 @@
+{% extends 'LayoutBundle::layout.html.twig' %}
+
+{% block container%}
+    <h1>Zamówienie</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Numer</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Usługa</th>
+                <td>{{ entity.service }}</td>
+            </tr>
+            <tr>
+                <th>Przedmiot zamówienia</th>
+                <td>{{ entity.subject }}</td>
+            </tr>
+            <tr>
+                <th>Wartość</th>
+                <td>{{ entity.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('order') }}">
+            Wróć do listy
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('order_edit', { 'id': entity.id }) }}">
+            Edytuj
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('order_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Usuń</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

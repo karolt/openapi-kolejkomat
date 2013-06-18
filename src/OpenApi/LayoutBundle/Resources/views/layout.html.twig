@@ -35,10 +35,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">InfoDelivery</a>
+            <a class="brand" href="{{path('homepage')}}">InfoDelivery</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="{{path('homepage')}}">Start</a></li>
+                    <li class="active"><a href="{{path('order')}}">Zamówienia</a></li>
+                    <li class="active"><a href="{{path('service')}}">Usługi</a></li>
                     <li style="padding-left: 350px"><a href="#about">O projekcie</a></li>
                     {% if app.user %}
                         <li><a href="{{path('security_logout')}}">Wyloguj</a></li>

@@ -1,0 +1,16 @@
+OpenApi\InfoDeliveryBundle\Entity\Customer:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '100'
+        phone:
+            type: string
+            length: '15'
+    lifecycleCallbacks: {  }

@@ -1,0 +1,11 @@
+InfoDeliveryBundle_order:
+    resource: "@InfoDeliveryBundle/Resources/config/routing/orderentry.yml"
+    prefix:   /zamowienia
+
+InfoDeliveryBundle_service:
+    resource: "@InfoDeliveryBundle/Resources/config/routing/service.yml"
+    prefix:   /uslugi
+
+homepage:
+    pattern:  /
+    defaults: { _controller: "InfoDeliveryBundle:Default:index" }

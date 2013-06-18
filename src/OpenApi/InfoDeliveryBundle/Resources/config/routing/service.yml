@@ -1,0 +1,30 @@
+service:
+    pattern:  /
+    defaults: { _controller: "InfoDeliveryBundle:Service:index" }
+
+service_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfoDeliveryBundle:Service:show" }
+
+service_new:
+    pattern:  /new
+    defaults: { _controller: "InfoDeliveryBundle:Service:new" }
+
+service_create:
+    pattern:  /create
+    defaults: { _controller: "InfoDeliveryBundle:Service:create" }
+    requirements: { _method: post }
+
+service_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfoDeliveryBundle:Service:edit" }
+
+service_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfoDeliveryBundle:Service:update" }
+    requirements: { _method: post|put }
+
+service_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfoDeliveryBundle:Service:delete" }
+    requirements: { _method: post|delete }

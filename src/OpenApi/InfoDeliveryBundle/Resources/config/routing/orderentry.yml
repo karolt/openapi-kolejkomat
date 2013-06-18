@@ -1,0 +1,30 @@
+order:
+    pattern:  /
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:index" }
+
+order_show:
+    pattern:  /{id}/pokaz
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:show" }
+
+order_new:
+    pattern:  /nowe
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:new" }
+
+order_create:
+    pattern:  /zapisz-nowe
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:create" }
+    requirements: { _method: post }
+
+order_edit:
+    pattern:  /{id}/edytuj
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:edit" }
+
+order_update:
+    pattern:  /{id}/zapisz-edycje
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:update" }
+    requirements: { _method: post|put }
+
+order_delete:
+    pattern:  /{id}/usun
+    defaults: { _controller: "InfoDeliveryBundle:OrderEntry:delete" }
+    requirements: { _method: post|delete }
