@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "cf94bdae34bd7ceb7013c3039cf90415",
+    "hash": "19b12aeb3ad6fba9cfe5ea1034126aa4",
     "packages": [
         {
             "name": "doctrine/common",
@@ -539,6 +539,40 @@
                 "minification"
             ],
             "time": "2013-06-01 22:13:43"
+        },
+        {
+            "name": "ktraczykowski/open-middleware-bundle",
+            "version": "dev-master",
+            "target-dir": "OpenMiddleware/Bundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/karolt/OpenMiddlewareBundle.git",
+                "reference": "eff963da46b73a04604586efea6bf5881c9438eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/karolt/OpenMiddlewareBundle/zipball/eff963da46b73a04604586efea6bf5881c9438eb",
+                "reference": "eff963da46b73a04604586efea6bf5881c9438eb",
+                "shasum": ""
+            },
+            "require": {
+                "guzzle/guzzle": ">=3.7.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "OpenMiddleware\\Bundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Karol Traczykowski",
+                    "email": "ktraczykowski@gmail.com"
+                }
+            ],
+            "time": "2013-06-20 21:35:47"
         },
         {
             "name": "monolog/monolog",
@@ -1266,9 +1300,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "ktraczykowski/open-middleware-bundle": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },

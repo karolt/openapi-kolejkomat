@@ -208,10 +208,10 @@ class OrderEntryController extends Controller
         }
 
         if ($state == OrderEntry::STATE_CLOSED || $state == OrderEntry::STATE_IN_PROGRESS) {
-            /** @var $sendSmsApi \OpenApi\OpenMiddlewareBundle\Api\SmsApi */
+            /** @var $sendSmsApi \OpenMiddleware\Bundle\Api\SmsApi */
             $sendSmsApi = $this->get('open_middleware.api.sms');
 
-            $sms = new \OpenApi\OpenMiddlewareBundle\Sms("+48513050541", "+48513050595", $this->buildSmsMessage($state, $entity));
+            $sms = new \OpenMiddleware\Bundle\Sms("+48513050541", "+48513050595", $this->buildSmsMessage($state, $entity));
             $sendSmsApi->send($sms);
         }
 
