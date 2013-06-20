@@ -7,7 +7,6 @@ class SendSms extends Api
 {
     public function send(Sms $sms)
     {
-
         $data = [
             'msg'   => $sms->getMessage(),
             'from'  => $sms->getFrom(),
@@ -16,6 +15,6 @@ class SendSms extends Api
 
         $response = $this->makeCall("sendSms", $data);
 
-       // var_dump($response);
+       //var_dump($response->getBody(true));
     }
 }

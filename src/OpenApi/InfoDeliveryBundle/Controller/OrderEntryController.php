@@ -207,10 +207,31 @@ class OrderEntryController extends Controller
             throw $this->createNotFoundException('Unable to find OrderEntry entity.');
         }
 
+        if ($state == OrderEntry::STATE_CLOSED || $state == OrderEntry::STATE_IN_PROGRESS) {
+            /** @var $sendSmsApi \OpenApi\OpenMiddlewareBundle\Api\SendSms */
+            $sendSmsApi = $this->get('open_middleware.send_sms');
+
+            $sms = new \OpenApi\OpenMiddlewareBundle\Sms("+48513050541", "+48513050595", $this->buildSmsMessage($state, $entity));
+            $sendSmsApi->send($sms);
+        }
+
         $entity->setState($state);
         $em->persist($entity);
         $em->flush();
 
         return $this->redirect($this->generateUrl('order'));
+    }
+
+    private function buildSmsMessage($state, $entity)
+    {
+        if ($state == OrderEntry::STATE_CLOSED) {
+            return  "Twóje zamówienie (numer:" . $entity->getId() . ") zostało zrealizowane. Zapraszamy po odbiór. --- ".$this->getUser()->getUsername();
+        }
+
+        if ($state == OrderEntry::STATE_IN_PROGRESS) {
+            return  "Twóje zamówienie (numer:" . $entity->getId() . ") jest w trakcie realizacji. Już wkrótce wszystko będzie gotowe :) --- ".$this->getUser()->getUsername();
+        }
+
+        throw new \RuntimeException("trying to build message for an unknown state");
     }
 }
