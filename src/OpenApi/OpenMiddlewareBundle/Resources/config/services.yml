@@ -18,7 +18,7 @@ services:
         class: OpenApi\OpenMiddlewareBundle\Api\Api
         arguments: [@http_client, %open_middleware.api.user%, %open_middleware.api.password%]
 
-    open_middleware.send_sms:
-        class: OpenApi\OpenMiddlewareBundle\Api\SendSms
+    open_middleware.api.sms:
+        class: OpenApi\OpenMiddlewareBundle\Api\SmsApi
         parent: open_middleware.api
 

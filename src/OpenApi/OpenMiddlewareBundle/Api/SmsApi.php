@@ -3,7 +3,7 @@ namespace OpenApi\OpenMiddlewareBundle\Api;
 
 use OpenApi\OpenMiddlewareBundle\Sms;
 
-class SendSms extends Api
+class SmsApi extends Api
 {
     public function send(Sms $sms)
     {
