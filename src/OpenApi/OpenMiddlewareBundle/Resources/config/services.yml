@@ -1,0 +1,24 @@
+parameters:
+#    open_middleware.example.class: OpenApi\OpenMiddlewareBundle\Example
+     open_middleware.api.gateway: https://openmiddleware.pl/orange/oracle/
+     open_middleware.api.user: hackathon18
+     open_middleware.api.password: hBzCr7De
+
+services:
+#    open_middleware.example:
+#        class: %open_middleware.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+
+    http_client:
+        class: Guzzle\Http\Client
+        arguments: [%open_middleware.api.gateway%]
+
+    open_middleware.api:
+        class: OpenApi\OpenMiddlewareBundle\Api\Api
+        arguments: [@http_client, %open_middleware.api.user%, %open_middleware.api.password%]
+
+    open_middleware.send_sms:
+        class: OpenApi\OpenMiddlewareBundle\Api\SendSms
+        parent: open_middleware.api
+
