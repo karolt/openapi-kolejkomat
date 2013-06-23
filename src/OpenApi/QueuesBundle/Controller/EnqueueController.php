@@ -22,12 +22,7 @@ class EnqueueController extends Controller
 
             $this->checkCustomerAlreadyInQueue($queue, $customer);
             $this->persistQueueingCustomer($customer, $queue);
-
-            /** @var $em \Doctrine\ORM\EntityManager */
-            $em = $this->getDoctrine()->getManager();
-            $queueingCustomers = $em->getRepository('QueuesBundle:QueueingCustomer')->findByQueueAndStates($queue, [QueueingCustomer::STATE_WAITING]);
-            $position = count($queueingCustomers);
-
+            $position = $this->calculatePosition($queue);
 
             return $this->render("QueuesBundle:YourQueue:enqueue.xml.twig", ['position' => $position]);
 
@@ -37,6 +32,15 @@ class EnqueueController extends Controller
 
 
 
+    }
+
+    private function calculatePosition($queue)
+    {
+        /** @var $em \Doctrine\ORM\EntityManager */
+        $em = $this->getDoctrine()->getManager();
+        $queueingCustomers = $em->getRepository('QueuesBundle:QueueingCustomer')->findByQueueAndStates($queue, [QueueingCustomer::STATE_WAITING]);
+        $position = count($queueingCustomers);
+        return $position;
     }
 
     private function parseUssdMessage($message)
