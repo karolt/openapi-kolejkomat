@@ -1,6 +1,3 @@
-info_delivery:
-    resource: "@InfoDeliveryBundle/Resources/config/routing.yml"
-    prefix:   /
 
 layout:
     resource: "@LayoutBundle/Resources/config/routing.yml"
