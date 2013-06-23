@@ -24,6 +24,6 @@ class QueueingCustomerRepository extends EntityRepository
             'state'     => $states
         ];
 
-        return $this->findBy($criteria, ['state' => 'DESC', 'joinedAt' => 'ASC']);
+        return $this->findBy($criteria, ['state' => 'DESC', 'joinedAt' => 'DESC']);
     }
 }

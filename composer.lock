@@ -547,12 +547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/karolt/OpenMiddlewareBundle.git",
-                "reference": "eff963da46b73a04604586efea6bf5881c9438eb"
+                "reference": "7d574a1f25f15fd17ef21f7cfad4e3b75ea84d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/karolt/OpenMiddlewareBundle/zipball/eff963da46b73a04604586efea6bf5881c9438eb",
-                "reference": "eff963da46b73a04604586efea6bf5881c9438eb",
+                "url": "https://api.github.com/repos/karolt/OpenMiddlewareBundle/zipball/7d574a1f25f15fd17ef21f7cfad4e3b75ea84d04",
+                "reference": "7d574a1f25f15fd17ef21f7cfad4e3b75ea84d04",
                 "shasum": ""
             },
             "require": {
@@ -572,7 +572,7 @@
                     "email": "ktraczykowski@gmail.com"
                 }
             ],
-            "time": "2013-06-20 21:35:47"
+            "time": "2013-06-23 18:59:56"
         },
         {
             "name": "monolog/monolog",
