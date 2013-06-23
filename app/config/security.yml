@@ -11,8 +11,8 @@ security:
             memory:
                 users:
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-                    mechanik:  { password: mechanik, roles: [ 'ROLE_USER' ] }
-                    pralnia: { password: pralnia, roles: [ 'ROLE_USER' ] }
+                    poczta:  { password: poczta, roles: [ 'ROLE_USER' ] }
+                    orange: { password: orange, roles: [ 'ROLE_USER' ] }
 
     firewalls:
         dev:

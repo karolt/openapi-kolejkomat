@@ -1,0 +1,25 @@
+OpenApi\QueuesBundle\Entity\QueueingCustomer:
+    type: entity
+    table: queues_queueing_customer
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        state:
+            type: integer
+        joinedAt:
+            type: datetime
+    manyToOne:
+        queue:
+            targetEntity: Queue
+            joinColumn:
+                name: queue_id
+                referencedColumnName: id
+        customer:
+            targetEntity: Customer
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

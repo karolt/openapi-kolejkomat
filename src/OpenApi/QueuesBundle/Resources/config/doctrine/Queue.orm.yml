@@ -1,0 +1,17 @@
+OpenApi\QueuesBundle\Entity\Queue:
+    type: entity
+    table: queues_queue
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        owner:
+            type: string
+            length: '100'
+    oneToMany:
+        queueingCustomers:
+            targetEntity: QueueingCustomer
+            mappedBy: queue
+    lifecycleCallbacks: {  }

@@ -1,0 +1,29 @@
+{% extends "LayoutBundle::layout.html.twig" %}
+
+{% block container %}
+{% if queueingCustomers %}
+    <table class="table">
+        <tr><th>pozycja</th><th>Telefon</th><th>data dołączenia</th><th>stan</th></tr>
+
+        {% for queingCustomer in queueingCustomers %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{queingCustomer.customer.phone}}</td>
+                <td>{{queingCustomer.joinedAt.format("H:i:s")}}</td>
+                <td>
+                    {% if queingCustomer.state == constant('OpenApi\\QueuesBundle\\Entity\\QueueingCustomer::STATE_WAITING') %}
+                        Oczekuje
+                    {% else %}
+                        Obsługiwany
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h3>Nie ma klientów w kolejce :(</h3>
+{% endif %}
+
+
+
+{%endblock %}

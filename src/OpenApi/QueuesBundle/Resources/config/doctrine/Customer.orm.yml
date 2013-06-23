@@ -1,0 +1,13 @@
+OpenApi\QueuesBundle\Entity\Customer:
+    type: entity
+    table: queues_customer
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        phone:
+            type: string
+            length: '15'
+    lifecycleCallbacks: {  }

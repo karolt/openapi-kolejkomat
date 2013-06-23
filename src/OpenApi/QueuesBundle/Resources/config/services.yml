@@ -1,0 +1,7 @@
+parameters:
+#    queues.example.class: OpenApi\QueuesBundle\Example
+
+services:
+#    queues.example:
+#        class: %queues.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

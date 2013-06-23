@@ -1,3 +1,6 @@
+queues:
+    resource: "@QueuesBundle/Resources/config/routing.yml"
+    prefix:   /
 
 layout:
     resource: "@LayoutBundle/Resources/config/routing.yml"
