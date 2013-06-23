@@ -16,3 +16,6 @@ parameters:
 
     open_middleware.api.user: user
     open_middleware.api.password: pass
+
+    open_middleware.phone1: "+48500000000"
+    open_middleware.phone2: "+48500000000"
