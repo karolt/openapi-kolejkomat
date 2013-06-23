@@ -33,6 +33,11 @@ class YourQueueController extends Controller
         $em->persist($queingCustomer);
         $em->flush();
 
+        //$to = $queingCustomer->getCustomer()->getPhone();
+        $to = $this->container->getParameter('open_middleware.phone2');
+        $msg= "Dziekujemy za skorzystanie z naszych uslug. Zapraszamy ponownie :)";
+        $this->sendUssdMessage($to, $msg);
+
         return $this->forward("QueuesBundle:YourQueue:index");
 
     }
@@ -49,9 +54,24 @@ class YourQueueController extends Controller
         $firstInQueue = array_shift($queueingCustomers);
         $firstInQueue->setState(QueueingCustomer::STATE_BEING_SERVED);
 
+        //$to = $firstInQueue->getCustomer()->getPhone();
+        $to = $this->container->getParameter('open_middleware.phone2');
+        $msg= "Szybciutko! juz Twoja kolej! Zapraszamy! :)";
+        $this->sendUssdMessage($to, $msg);
+
+
         $em->persist($firstInQueue);
         $em->flush();
 
         return $this->forward("QueuesBundle:YourQueue:index");
+    }
+
+    private function sendUssdMessage($to, $msg)
+    {
+        /** @var $ussdApi \OpenMiddleware\Bundle\Api\UssdApi */
+        $ussdApi = $this->get('open_middleware.api.ussd');
+
+        $msg = new \OpenMiddleware\Bundle\Ussd($to, $msg);
+        $ussdApi->send($msg);
     }
 }
