@@ -9,3 +9,7 @@ queue_customer_served:
 queue_serve_next:
     pattern:  /przyjmij-kolejna-osobe/{id}
     defaults: { _controller: QueuesBundle:YourQueue:serveNext }
+
+queue_get_ussd:
+    pattern:  /odbierz-ussd/
+    defaults: { _controller: QueuesBundle:Enqueue:enqueue }
