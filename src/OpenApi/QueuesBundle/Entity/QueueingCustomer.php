@@ -20,12 +20,12 @@ class QueueingCustomer
     private $id;
 
     /**
-     * @var integer
+     * @var Queue
      */
     private $queue;
 
     /**
-     * @var integer
+     * @var Customer
      */
     private $customer;
 
@@ -53,7 +53,7 @@ class QueueingCustomer
     /**
      * Set queue
      *
-     * @param integer $queue
+     * @param Queue $queue
      * @return QueueingCustomer
      */
     public function setQueue($queue)
@@ -66,7 +66,7 @@ class QueueingCustomer
     /**
      * Get queue
      *
-     * @return integer 
+     * @return Queue
      */
     public function getQueue()
     {
@@ -76,7 +76,7 @@ class QueueingCustomer
     /**
      * Set customer
      *
-     * @param integer $customer
+     * @param Customer $customer
      * @return QueueingCustomer
      */
     public function setCustomer($customer)
@@ -89,7 +89,7 @@ class QueueingCustomer
     /**
      * Get customer
      *
-     * @return integer 
+     * @return Customer
      */
     public function getCustomer()
     {
