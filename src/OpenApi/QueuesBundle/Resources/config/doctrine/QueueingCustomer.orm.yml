@@ -1,6 +1,7 @@
 OpenApi\QueuesBundle\Entity\QueueingCustomer:
     type: entity
     table: queues_queueing_customer
+    repositoryClass: OpenApi\QueuesBundle\Entity\QueueingCustomerRepository
     fields:
         id:
             type: integer

@@ -4,6 +4,7 @@ namespace OpenApi\QueuesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use OpenApi\QueuesBundle\Entity\Queue;
 use OpenApi\QueuesBundle\Entity\QueueingCustomer;
+use OpenApi\QueuesBundle\Entity\Customer;
 
 class YourQueueController extends Controller
 {
@@ -13,12 +14,31 @@ class YourQueueController extends Controller
         /** @var $queue Queue */
         $queue = $em->getRepository('QueuesBundle:Queue')->findOneByOwner($this->getUser()->getUsername());
 
-        $criteria = [
-            'queue'  => $queue->getId(),
-            'state'     => [QueueingCustomer::STATE_WAITING, QueueingCustomer::STATE_BEING_SERVED]
-        ];
-        $queueingCustomers = $em->getRepository('QueuesBundle:QueueingCustomer')->findBy($criteria);
+        /** @var $qcRepo \OpenApi\QueuesBundle\Entity\QueueingCustomerRepository */
+        $qcRepo = $em->getRepository('QueuesBundle:QueueingCustomer');
+        $queueingCustomers = $qcRepo->findByQueueAndStates($queue, [QueueingCustomer::STATE_WAITING, QueueingCustomer::STATE_BEING_SERVED]);
 
         return $this->render("QueuesBundle:YourQueue:index.html.twig", ['queue' => $queue, 'queueingCustomers' => $queueingCustomers]);
+    }
+
+
+    /**
+     * @param \OpenApi\QueuesBundle\Entity\QueueingCustomer $queingCustomer
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function customerServedAction(QueueingCustomer $queingCustomer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $queingCustomer->setState(QueueingCustomer::STATE_SERVED);
+        $em->persist($queingCustomer);
+        $em->flush();
+
+        return $this->forward("QueuesBundle:YourQueue:index");
+
+    }
+
+    public function serveNextAction(Queue $queue)
+    {
+
     }
 }

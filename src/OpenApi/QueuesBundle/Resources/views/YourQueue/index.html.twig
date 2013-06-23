@@ -3,7 +3,7 @@
 {% block container %}
 {% if queueingCustomers %}
     <table class="table">
-        <tr><th>pozycja</th><th>Telefon</th><th>data dołączenia</th><th>stan</th></tr>
+        <tr><th>pozycja</th><th>Telefon</th><th>data dołączenia</th><th>stan</th><th>akcje</th></tr>
 
         {% for queingCustomer in queueingCustomers %}
             <tr>
@@ -16,6 +16,9 @@
                     {% else %}
                         Obsługiwany
                     {% endif %}
+                </td>
+                <td>
+                    <a href="{{path('queue_customer_served', {id: queingCustomer.id })}}">Obsłużony</a>
                 </td>
             </tr>
         {% endfor %}

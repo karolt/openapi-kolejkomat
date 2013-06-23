@@ -1,3 +1,7 @@
-homepage:
+queue:
     pattern:  /
     defaults: { _controller: QueuesBundle:YourQueue:index }
+
+queue_customer_served:
+    pattern:  /klient-obsluzony/{id}
+    defaults: { _controller: QueuesBundle:YourQueue:customerServed }
