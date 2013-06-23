@@ -11,5 +11,5 @@ queue_serve_next:
     defaults: { _controller: QueuesBundle:YourQueue:serveNext }
 
 queue_get_ussd:
-    pattern:  /odbierz-ussd/
-    defaults: { _controller: QueuesBundle:Enqueue:enqueue }
+    pattern:  /open-middleware/odbierz-ussd/
+    defaults: { _controller: QueuesBundle:Enqueue:enqueue, _format:xml }

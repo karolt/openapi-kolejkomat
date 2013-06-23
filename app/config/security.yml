@@ -22,6 +22,9 @@ security:
         login:
             pattern:  ^/zaloguj$
             security: false
+        api:
+            pattern: ^/open-middleware
+            security: false
 
         secured_area:
             pattern:    ^/

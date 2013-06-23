@@ -54,6 +54,6 @@ class EnqueueController extends Controller
         $em->persist($qc);
         $em->flush();
 
-
+        return $this->render("QueuesBundle:YourQueue:enqueue.xml.twig", ['position' => 15]);
     }
 }
