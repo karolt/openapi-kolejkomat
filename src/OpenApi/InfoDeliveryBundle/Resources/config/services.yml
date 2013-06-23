@@ -1,7 +1,0 @@
-parameters:
-#    info_delivery.example.class: OpenApi\InfoDeliveryBundle\Example
-
-services:
-#    info_delivery.example:
-#        class: %info_delivery.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

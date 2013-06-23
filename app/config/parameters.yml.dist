@@ -13,3 +13,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    open_middleware.api.user: user
+    open_middleware.api.password: pass
