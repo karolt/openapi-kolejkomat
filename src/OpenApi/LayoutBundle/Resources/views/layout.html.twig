@@ -35,10 +35,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Kolejkomat</a>
+            <a class="brand" href="{{path('queue')}}">Kolejkomat</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li ><a href="#">Start</a></li>
+                    <li ><a href="{{path('queue')}}">Start</a></li>
                     <li style="padding-left: 350px"><a href="#about">O projekcie</a></li>
                     {% if app.user %}
                         <li><a href="{{path('security_logout')}}">Wyloguj</a></li>
