@@ -2,6 +2,7 @@
 
 {% block container %}
 {% if queueingCustomers %}
+    <h4><a href="{{path('queue_serve_next', {id:queue.id})}}">Przyjmij kolejną osobę</a></h4>
     <table class="table">
         <tr><th>pozycja</th><th>Telefon</th><th>data dołączenia</th><th>stan</th><th>akcje</th></tr>
 
@@ -18,7 +19,9 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{{path('queue_customer_served', {id: queingCustomer.id })}}">Obsłużony</a>
+                    {% if queingCustomer.state == constant('OpenApi\\QueuesBundle\\Entity\\QueueingCustomer::STATE_BEING_SERVED') %}
+                        <a href="{{path('queue_customer_served', {id: queingCustomer.id })}}">Obsłużony</a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

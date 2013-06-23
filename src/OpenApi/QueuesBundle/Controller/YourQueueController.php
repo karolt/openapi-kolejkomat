@@ -39,6 +39,19 @@ class YourQueueController extends Controller
 
     public function serveNextAction(Queue $queue)
     {
+        $em = $this->getDoctrine()->getManager();
 
+        /** @var $qcRepo \OpenApi\QueuesBundle\Entity\QueueingCustomerRepository */
+        $qcRepo = $em->getRepository('QueuesBundle:QueueingCustomer');
+        $queueingCustomers = $qcRepo->findByQueueAndStates($queue, [QueueingCustomer::STATE_WAITING]);
+
+        /** @var $firstInQueue QueueingCustomer */
+        $firstInQueue = array_shift($queueingCustomers);
+        $firstInQueue->setState(QueueingCustomer::STATE_BEING_SERVED);
+
+        $em->persist($firstInQueue);
+        $em->flush();
+
+        return $this->forward("QueuesBundle:YourQueue:index");
     }
 }

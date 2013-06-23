@@ -5,3 +5,7 @@ queue:
 queue_customer_served:
     pattern:  /klient-obsluzony/{id}
     defaults: { _controller: QueuesBundle:YourQueue:customerServed }
+
+queue_serve_next:
+    pattern:  /przyjmij-kolejna-osobe/{id}
+    defaults: { _controller: QueuesBundle:YourQueue:serveNext }
