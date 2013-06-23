@@ -28,6 +28,11 @@ class YourQueueController extends Controller
      */
     public function customerServedAction(QueueingCustomer $queingCustomer)
     {
+        //akcja nie ma sensu jesli klient nie ma obecnie stanu 'w trakcie obslugi'
+        if ($queingCustomer->getState() != QueueingCustomer::STATE_BEING_SERVED) {
+            return $this->forward("QueuesBundle:YourQueue:index");
+        }
+
         $em = $this->getDoctrine()->getManager();
         $queingCustomer->setState(QueueingCustomer::STATE_SERVED);
         $em->persist($queingCustomer);
